@@ -1,16 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import Example from './Components/Example';
+import Homepage from './Pages/Homepage/Homepage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Example />
-        <p>
-          Woot
-        </p>
-      </header>
+      <Homepage />
     </div>
   );
 }

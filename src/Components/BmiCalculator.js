@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-function Example() {
-    // Declare a new state variable, which we'll call "count"
+function BmiCalculator() {
     const [values, setValues] = useState({
         heightFeet: null,
         heightInches: null,
         weight: null
     });
+
+    const [bmi, setBmi] = useState('');
 
     const handleHeightFeetInputChange = (event) => {
       event.persist();
@@ -34,10 +35,8 @@ function Example() {
     //Formula: weight (lb) / [height (in)]2 x 703
    function calculateBMI(e) {
       e.preventDefault();
-      console.log(this);
       let heightInInches = (parseInt(values.heightFeet) * 12) + parseInt(values.heightInches);
-      console.log(heightInInches);
-      alert((parseInt(values.weight) / (heightInInches**2))*703);
+      setBmi((parseInt(values.weight) / (heightInInches**2))*703);
    }
 
     return (
@@ -71,10 +70,11 @@ function Example() {
             value={values.weight}
             onChange={handleWeightInputChange}></input>
           </label>
-          <button type="submit">Calculate</button>
+          <button type="submit" onSubmit={calculateBMI}>Calculate</button>
+          <h3>{bmi}</h3>
         </form>
       </div>
     );
   }
 
-  export default Example;
+  export default BmiCalculator;
